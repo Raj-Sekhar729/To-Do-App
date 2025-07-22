@@ -91,14 +91,18 @@ import React, { useEffect, useRef, useState } from 'react'
 import ToDoItems from './ToDoItems'
 
 const ToDo = () => {
+
+  // YOUR EXACT ORIGINAL FUNCTIONALITY - UNCHANGED
   const [todoList, setTodoList] = useState(localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [])
   const inputRef = useRef();
 
   const add = ()=>{
     const inputText = inputRef.current.value.trim();
-    if(inputText === "") {
+
+    if(inputText === "")
+       {
         return null;
-    }
+       }
     
     const newTodo = {
       id : Date.now(),
@@ -160,7 +164,8 @@ const ToDo = () => {
           </div>
 
            {/* ---------to-do list-------- */}
-           <div className="space-y-2">
+           
+           <div>
               {todoList.map((item, index) => {
                   return <ToDoItems key={index} text={item.text} id={item.id} isComplete={item.isComplete} 
                   deleteTodo={deleteTodo} toggle={toggle}/>
